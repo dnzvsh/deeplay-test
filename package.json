@@ -1,0 +1,19 @@
+{
+  "name": "deeplay-test",
+  "version": "1.0.0",
+  "description": "Test task",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnzvsh/deeplay-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnzvsh/deeplay-test/issues"
+  },
+  "homepage": "https://github.com/dnzvsh/deeplay-test#readme"
+}
