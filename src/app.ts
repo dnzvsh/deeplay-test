@@ -1,0 +1,28 @@
+import {Employee} from './employee.js'
+import {List} from './list.js'
+
+const john = new Employee(
+    'John Grey', 67, 'male', 'Consultant', {subdivision: 'Relationship'});
+
+const joanne = new Employee(
+    'J.K. Rowling', 45, 'female', 'Writer', {subdivision: 'Fantasy'});
+
+const roma = new Employee(
+    'Roman Yaroshev', 23, 'male', 'Student',
+    {subdivision: 'SibSUTIS', department: 'EVM'});
+
+const factory = new List;
+
+factory.addEmployee(john);
+factory.addEmployee(joanne);
+factory.addEmployee(roma);
+
+factory.employeesList();
+factory.deleteEmployee(roma);
+
+const putinId = factory.getEmployeeId(john);
+
+factory.promoteEmployeeById(
+    putinId, 'Programmer', {company: 'Yandex', department: 'Backend'});
+
+factory.employeesList();
