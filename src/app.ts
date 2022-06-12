@@ -20,9 +20,10 @@ factory.addEmployee(roma);
 factory.employeesList();
 factory.deleteEmployee(roma);
 
-const putinId = factory.getEmployeeId(john);
+const johnId = factory.getEmployeeId(john);
 
 factory.promoteEmployeeById(
-    putinId, 'Programmer', {company: 'Yandex', department: 'Backend'});
+    johnId, 'Programmer', {company: 'Yandex', department: 'Backend'});
 
+console.log('\nList after delete employee:\n')
 factory.employeesList();
