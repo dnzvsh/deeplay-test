@@ -74,6 +74,16 @@ class EmployeesList {
           new Controller(empl.fullName, empl.age, empl.sex, additionalInfo));
     }
   }
+
+  getEmployeesByPosition(pos: Position): Array<Person> {
+    const emplsArr: Array<Person> = [];
+    for (const empl of this._employeesMap.values()) {
+      if (pos === empl.position) {
+        emplsArr.push(empl);
+      }
+    }
+    return emplsArr;
+  }
 }
 
 export {EmployeesList, Position};
