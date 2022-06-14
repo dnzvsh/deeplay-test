@@ -6,7 +6,13 @@ Test task for Deeplay Intership.
 - Node JS
 
 # Usage
+## Run
 ```bash
 tsc
 node dist/app.js
+```
+
+## Tests
+```
+npm run test
 ```
