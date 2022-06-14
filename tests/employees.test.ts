@@ -1,10 +1,12 @@
-import {Director, Manager, Worker} from '../src/employees';
+import {Controller, Director, Manager, Worker} from '../src/employees';
 
 const managerMac = new Manager('John Grey', 67, 'male', 'MacDonalds');
 
 const directorAmazon = new Director('Jeffrey Preston', 68, 'male', 'Amazon');
 
 const worker = new Worker('Alice Smith', 25, 'female', 'Chief Keef');
+
+const controllerFinance = new Controller('Adam Douglas', 35, 'male', 'Finance');
 
 test('Manager getInfo', () => {
   const managerInfo: string = managerMac.getInfo();
@@ -34,4 +36,14 @@ age: 25
 sex: female
 position: worker
 manager's full name: Chief Keef`);
+});
+
+test('Controller getInfo', () => {
+  const controllerInfo: string = controllerFinance.getInfo();
+
+  expect(controllerInfo).toBe(`full name: Adam Douglas
+age: 35
+sex: male
+position: controller
+responsibility: Finance`);
 });
