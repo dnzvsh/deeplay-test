@@ -67,4 +67,21 @@ class Worker extends Person {
   }
 }
 
-export {Manager, Director, Worker};
+
+class Controller extends Person {
+  responsibility: string;
+
+  constructor(
+      fullName: string, age: number, sex: string, responsibility: string) {
+    super(fullName, age, sex);
+    this.position = 'controller';
+    this.responsibility = responsibility;
+  }
+
+  getInfo(): string {
+    let employeeBaseInfo: string = super.getInfo();
+    return employeeBaseInfo + `responsibility: ${this.responsibility}`;
+  }
+}
+
+export {Manager, Director, Worker, Controller};
