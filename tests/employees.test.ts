@@ -9,9 +9,8 @@ const worker = new Worker('Alice Smith', 25, 'female', 'Chief Keef');
 
 const controllerFinance = new Controller('Adam Douglas', 35, 'male', 'Finance');
 
+const managerInfo: string = managerMac.getInfo();
 test('Manager getInfo', () => {
-  const managerInfo: string = managerMac.getInfo();
-
   expect(managerInfo).toBe(`full name: John Grey
 age: 67
 sex: male
@@ -19,9 +18,8 @@ position: manager
 subdivision: MacDonalds`);
 });
 
+const directorInfo: string = directorAmazon.getInfo();
 test('Director getInfo', () => {
-  const directorInfo: string = directorAmazon.getInfo();
-
   expect(directorInfo).toBe(`full name: Jeffrey Preston
 age: 68
 sex: male
@@ -29,9 +27,8 @@ position: director
 company: Amazon`);
 });
 
+const workerInfo: string = worker.getInfo();
 test('Worker getInfo', () => {
-  const workerInfo: string = worker.getInfo();
-
   expect(workerInfo).toBe(`full name: Alice Smith
 age: 25
 sex: female
@@ -39,9 +36,8 @@ position: worker
 manager's full name: Chief Keef`);
 });
 
+const controllerInfo: string = controllerFinance.getInfo();
 test('Controller getInfo', () => {
-  const controllerInfo: string = controllerFinance.getInfo();
-
   expect(controllerInfo).toBe(`full name: Adam Douglas
 age: 35
 sex: male
@@ -51,11 +47,34 @@ responsibility: Finance`);
 
 
 const list = new EmployeesList();
-list.addEmployee(worker);
+const workerId = list.addEmployee(worker);
 list.addEmployee(directorAmazon);
-list.addEmployee(managerMac);
+const managerId = list.addEmployee(managerMac);
 list.addEmployee(controllerFinance);
 
+const listSizeAdd = list.size;
 test('EmployeesList add', () => {
-  expect(list.size).toBe(4);
+  expect(listSizeAdd).toEqual(4);
+});
+
+test('EmployeesList getEmployeeId', () => {
+  expect(list.getEmployeeId(worker)).toBe(workerId);
+});
+
+list.deleteEmployeeById(managerId);
+
+const listSizeDelete = list.size;
+test('EmployeesList delete', () => {
+  expect(listSizeDelete).toEqual(3);
+});
+
+list.editEmployeeById(workerId, 'managersFullName', 'Peter Parker');
+
+const workerNewInfo = list.getEmployeeById(workerId)?.getInfo();
+test('EditEmployeeById', () => {
+  expect(workerNewInfo).toBe(`full name: Alice Smith
+age: 25
+sex: female
+position: worker
+manager's full name: Peter Parker`);
 });
