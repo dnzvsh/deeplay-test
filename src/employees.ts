@@ -84,4 +84,4 @@ class Controller extends Person {
   }
 }
 
-export {Manager, Director, Worker, Controller};
+export {Manager, Director, Worker, Controller, Person};
