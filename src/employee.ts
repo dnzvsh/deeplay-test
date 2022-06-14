@@ -24,8 +24,8 @@ class Employee {
 
   personInfo(): string {
     let infoString: string =
-        `Employee ID: ${this.id}\nFull name: ${this.fullName}\nAge: ${
-            this.age}\nSex: ${this.sex}\nPosition: ${this.position}\n`;
+        `id: ${this.id}\nfullName: ${this.fullName}\nage: ${this.age}\nsex: ${
+            this.sex}\nposition: ${this.position}\n`;
 
     for (const key of Object.keys(this.additionalInfo)) {
       infoString = infoString + key + ': ' + this.additionalInfo[key] + '\n';

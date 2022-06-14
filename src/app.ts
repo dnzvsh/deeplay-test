@@ -11,12 +11,19 @@ const roma = new Employee(
     'Roman Yaroshev', 23, 'male', 'Student',
     {subdivision: 'SibSUTIS', department: 'EVM'});
 
-const factory = new List;
+const factory = new List([]);
 
 factory.addEmployee(john);
 factory.addEmployee(joanne);
 factory.addEmployee(roma);
 
+const foundEmployeesList = factory.findEmployees('male', 'sex');
+
+console.log('\nOnly male employees:\n')
+foundEmployeesList.employeesList();
+
+
+console.log('\nEmployee List:\n')
 factory.employeesList();
 factory.deleteEmployee(roma);
 
