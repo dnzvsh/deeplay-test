@@ -1,4 +1,12 @@
-import {Person} from './employees';
+import {Controller, Director, Manager, Person, Worker} from './employees';
+
+enum Position {
+  Controller = 'controller',
+  Director = 'director',
+  Manager = 'manager',
+  Worker = 'worker'
+}
+
 
 class EmployeesList {
   private id: number;
@@ -39,6 +47,33 @@ class EmployeesList {
   getEmployeeById(id: number): Person|undefined {
     return this._employeesMap.get(id);
   }
+
+  promoteEmployeeById(
+      id: number, newPosition: Position, additionalInfo: string): void {
+    const empl = this.getEmployeeById(id);
+
+    if (!empl) return;
+
+    this.deleteEmployeeById(id);
+
+    if (newPosition === Position.Manager) {
+      this._employeesMap.set(
+          id, new Manager(empl.fullName, empl.age, empl.sex, additionalInfo));
+    }
+    if (newPosition === Position.Director) {
+      this._employeesMap.set(
+          id, new Director(empl.fullName, empl.age, empl.sex, additionalInfo));
+    }
+    if (newPosition === Position.Worker) {
+      this._employeesMap.set(
+          id, new Worker(empl.fullName, empl.age, empl.sex, additionalInfo));
+    }
+    if (newPosition === Position.Controller) {
+      this._employeesMap.set(
+          id,
+          new Controller(empl.fullName, empl.age, empl.sex, additionalInfo));
+    }
+  }
 }
 
-export {EmployeesList};
+export {EmployeesList, Position};
