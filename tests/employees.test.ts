@@ -98,3 +98,9 @@ const managersArr = list.getEmployeesByPosition(Position.Manager);
 const numberOfManagers = managersArr.length;
 
 test('getEmployeesByPosition', () => {expect(numberOfManagers).toBe(2)});
+
+const photographersArr =
+    list.getEmployeesByProperty('subdivision', 'Photographers');
+const numberOfPhotographers = photographersArr.length;
+
+test('getEmployeesByProperty', () => {expect(numberOfPhotographers).toBe(2)});
