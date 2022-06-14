@@ -14,5 +14,6 @@ node dist/app.js
 
 ## Tests
 ```
+tsc
 npm run test
 ```
