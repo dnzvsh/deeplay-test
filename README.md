@@ -13,6 +13,12 @@ Test task for Deeplay Intership.
 - Node JS v16.13.2
 
 # Usage
+
+## Before start
+```
+npm install
+```
+
 ## Tests
 ```
 npm run test
