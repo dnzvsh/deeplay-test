@@ -33,6 +33,10 @@ class EmployeesList {
   editEmployeeById(id: number, key: string, newValue: string): void {
     (this._employeesMap.get(id) as any)[key] = newValue;
   }
+
+  getEmployeeById(id: number): Person|undefined {
+    return this._employeesMap.get(id);
+  }
 }
 
 export {EmployeesList};
