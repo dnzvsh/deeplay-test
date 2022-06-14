@@ -84,6 +84,20 @@ class EmployeesList {
     }
     return emplsArr;
   }
+
+
+  // включает в себя выборку по подразделению
+  getEmployeesByProperty(property: string, additionalInfo: string):
+      Array<Person> {
+    const emplsArr: Array<Person> = [];
+    for (const empl of this._employeesMap.values()) {
+      if ((empl as any)[property] &&
+          additionalInfo === (empl as any)[property]) {
+        emplsArr.push(empl);
+      }
+    }
+    return emplsArr;
+  }
 }
 
 export {EmployeesList, Position};
