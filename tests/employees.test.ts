@@ -92,3 +92,9 @@ sex: female
 position: manager
 subdivision: Photographers`);
 });
+
+list.addEmployee(new Manager('Timothy Burton', 63, 'male', 'Photographers'));
+const managersArr = list.getEmployeesByPosition(Position.Manager);
+const numberOfManagers = managersArr.length;
+
+test('getEmployeesByPosition', () => {expect(numberOfManagers).toBe(2)});
