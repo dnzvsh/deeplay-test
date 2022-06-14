@@ -13,7 +13,7 @@ abstract class Person {
   }
 
   getInfo(): string {
-    let infoString: string = `fullName: ${this.fullName}\nage: ${
+    let infoString: string = `full name: ${this.fullName}\nage: ${
         this.age}\nsex: ${this.sex}\nposition: ${this.position}\n`;
 
     return infoString;
@@ -51,4 +51,20 @@ class Director extends Person {
   }
 }
 
-export {Manager, Director};
+class Worker extends Person {
+  managersFullName: string;
+
+  constructor(
+      fullName: string, age: number, sex: string, managersFullName: string) {
+    super(fullName, age, sex);
+    this.position = 'worker';
+    this.managersFullName = managersFullName;
+  }
+
+  getInfo(): string {
+    let employeeBaseInfo: string = super.getInfo();
+    return employeeBaseInfo + `manager's full name: ${this.managersFullName}`;
+  }
+}
+
+export {Manager, Director, Worker};
