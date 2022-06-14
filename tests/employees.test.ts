@@ -1,4 +1,4 @@
-import {EmployeesList} from '../src/employeeList';
+import {EmployeesList, Position} from '../src/employeeList';
 import {Controller, Director, Manager, Worker} from '../src/employees';
 
 const managerMac = new Manager('John Grey', 67, 'male', 'MacDonalds');
@@ -57,8 +57,10 @@ test('EmployeesList add', () => {
   expect(listSizeAdd).toEqual(4);
 });
 
+const receivedWorkerId = list.getEmployeeId(worker);
+
 test('EmployeesList getEmployeeId', () => {
-  expect(list.getEmployeeId(worker)).toBe(workerId);
+  expect(receivedWorkerId).toBe(workerId);
 });
 
 list.deleteEmployeeById(managerId);
@@ -77,4 +79,16 @@ age: 25
 sex: female
 position: worker
 manager's full name: Peter Parker`);
+});
+
+
+list.promoteEmployeeById(workerId, Position.Manager, 'Photographers');
+const PromotedWorkerToManagerInfo = list.getEmployeeById(workerId)?.getInfo();
+
+test('PromoteEmployeeById', () => {
+  expect(PromotedWorkerToManagerInfo).toBe(`full name: Alice Smith
+age: 25
+sex: female
+position: manager
+subdivision: Photographers`);
 });
