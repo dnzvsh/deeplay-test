@@ -1,3 +1,4 @@
+import {EmployeesList} from '../src/employeeList';
 import {Controller, Director, Manager, Worker} from '../src/employees';
 
 const managerMac = new Manager('John Grey', 67, 'male', 'MacDonalds');
@@ -46,4 +47,15 @@ age: 35
 sex: male
 position: controller
 responsibility: Finance`);
+});
+
+
+const list = new EmployeesList();
+list.addEmployee(worker);
+list.addEmployee(directorAmazon);
+list.addEmployee(managerMac);
+list.addEmployee(controllerFinance);
+
+test('EmployeesList add', () => {
+  expect(list.size).toBe(4);
 });
