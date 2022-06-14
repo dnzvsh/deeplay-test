@@ -31,7 +31,9 @@ class EmployeesList {
   }
 
   editEmployeeById(id: number, key: string, newValue: string): void {
-    (this._employeesMap.get(id) as any)[key] = newValue;
+    if ((this._employeesMap.get(id) as any)[key]) {
+      (this._employeesMap.get(id) as any)[key] = newValue;
+    }
   }
 
   getEmployeeById(id: number): Person|undefined {
