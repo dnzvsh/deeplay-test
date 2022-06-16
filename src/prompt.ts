@@ -111,7 +111,7 @@ const promptIsIDKnown = async () => {
     type: 'confirm',
     name: 'isIdKnown',
     message: 'Do you know employee\'s ID?',
-    default: false,
+    default: true,
   }]);
 };
 
