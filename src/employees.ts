@@ -13,7 +13,7 @@ abstract class Person {
   }
 
   getInfo(): string {
-    let infoString: string = `full name: ${this.fullName}\nage: ${
+    const infoString: string = `full name: ${this.fullName}\nage: ${
         this.age}\nsex: ${this.sex}\nposition: ${this.position}\n`;
 
     return infoString;
@@ -31,7 +31,7 @@ class Manager extends Person {
   }
 
   getInfo(): string {
-    let employeeBaseInfo: string = super.getInfo();
+    const employeeBaseInfo: string = super.getInfo();
     return employeeBaseInfo + `subdivision: ${this.subdivision}`;
   }
 }
@@ -46,7 +46,7 @@ class Director extends Person {
   }
 
   getInfo(): string {
-    let employeeBaseInfo: string = super.getInfo();
+    const employeeBaseInfo: string = super.getInfo();
     return employeeBaseInfo + `company: ${this.company}`;
   }
 }
@@ -62,7 +62,7 @@ class Worker extends Person {
   }
 
   getInfo(): string {
-    let employeeBaseInfo: string = super.getInfo();
+    const employeeBaseInfo: string = super.getInfo();
     return employeeBaseInfo + `manager's full name: ${this.managersFullName}`;
   }
 }
@@ -79,7 +79,7 @@ class Controller extends Person {
   }
 
   getInfo(): string {
-    let employeeBaseInfo: string = super.getInfo();
+    const employeeBaseInfo: string = super.getInfo();
     return employeeBaseInfo + `responsibility: ${this.responsibility}`;
   }
 }
