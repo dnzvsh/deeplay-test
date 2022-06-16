@@ -165,8 +165,16 @@ const promptPositionForSelect = async () => {
 const promptPropAndValueForSelect = async () => {
   return await prompt([
     {
+      type: 'list',
       name: 'property',
       message: 'By what property do you want to select?',
+      choices: [
+        'fullName',
+        'age',
+        'sex',
+        'position',
+        'additionalInfo',
+      ],
     },
     {
       name: 'value',
