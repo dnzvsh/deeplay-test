@@ -1,12 +1,13 @@
 import {Controller, Director, Manager, Person, Worker} from './employees';
 
+/* eslint-disable */
 enum Position {
   Controller = 'controller',
   Director = 'director',
   Manager = 'manager',
   Worker = 'worker'
 }
-
+/* eslint-enable */
 
 class EmployeesList {
   private id: number;
@@ -84,7 +85,6 @@ class EmployeesList {
     }
     return emplsArr;
   }
-
 
   // включает в себя выборку по подразделению
   getEmployeesByProperty(property: string, additionalInfo: string):
