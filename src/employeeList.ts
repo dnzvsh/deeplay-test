@@ -40,12 +40,20 @@ class EmployeesList {
   }
 
   editEmployeeById(id: number, key: string, newValue: string): void {
-    if ((this._employeesMap.get(id) as any)[key]) {
-      if (key === 'age') {
-        (this._employeesMap.get(id) as any)[key] = Number(newValue);
-      } else {
-        (this._employeesMap.get(id) as any)[key] = newValue;
-      }
+    const person: Person|undefined = this._employeesMap.get(id);
+    let key_: string = key;
+    if (key_ === 'age') {
+      (this._employeesMap.get(id) as any)[key_] = Number(newValue);
+      return;
+    }
+    if (key_ === 'additionalInfo') {
+      if (person instanceof Controller) key_ = 'responsibility';
+      if (person instanceof Worker) key_ = 'managersFullName';
+      if (person instanceof Manager) key_ = 'subdivision';
+      if (person instanceof Director) key_ = 'company';
+    }
+    if ((person as any)[key_] != undefined) {
+      (this._employeesMap.get(id) as any)[key_] = newValue;
     }
   }
 
