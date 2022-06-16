@@ -9,6 +9,7 @@ const deleteEmployee = 'Delete employee';
 const editEmployee = 'Edit employee info';
 const promoteEmployee = 'Promote employee';
 const employeesSelection = 'Make a selection of employees';
+const exit = 'Close program';
 
 const list = new EmployeesList();
 
@@ -128,6 +129,7 @@ const promptStart = async () => {
       editEmployee,
       promoteEmployee,
       employeesSelection,
+      exit,
     ],
   }]);
 };
@@ -187,6 +189,8 @@ const promptPropAndValueForSelect = async () => {
 const main = async () => {
   const startPromise = await promptStart();
   const opType: string = startPromise.whatToDo;
+
+  if (opType === exit) return;
 
   if (opType === lookAtEmployeeList) {
     for (const idEmpl of list.employeesMap) {
