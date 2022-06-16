@@ -133,6 +133,49 @@ const promptStart = async () => {
 };
 
 
+const byPos = 'By position';
+const byPropAndValue = 'By property and value';
+
+const promptForSelectionType = async () => {
+  return await prompt([{
+    type: 'list',
+    name: 'typeOfSelection',
+    message: 'How to select?',
+    choices: [
+      'By position',
+      'By property and value',
+    ],
+  }]);
+};
+
+const promptPositionForSelect = async () => {
+  return await prompt([{
+    type: 'list',
+    name: 'position',
+    message: 'Choose position for select: ',
+    choices: [
+      Position.Worker,
+      Position.Controller,
+      Position.Manager,
+      Position.Director,
+    ],
+  }]);
+};
+
+const promptPropAndValueForSelect = async () => {
+  return await prompt([
+    {
+      name: 'property',
+      message: 'By what property do you want to select?',
+    },
+    {
+      name: 'value',
+      message: 'What value thats property has?',
+    },
+  ]);
+};
+
+
 const main = async () => {
   const startPromise = await promptStart();
   const opType: string = startPromise.whatToDo;
@@ -181,6 +224,28 @@ const main = async () => {
     const person = createNewPerson(infoAboutEmployee);
     if (person) {
       list.addEmployee(person);
+    }
+  }
+
+  if (opType === employeesSelection) {
+    let personsList;
+    const selectionType = await promptForSelectionType();
+    const typeOfSelection = selectionType.typeOfSelection;
+    if (typeOfSelection === byPos) {
+      const positionForSelect = await promptPositionForSelect();
+      const position = positionForSelect.position;
+      personsList = list.getEmployeesByPosition(position);
+    }
+    if (typeOfSelection === byPropAndValue) {
+      const propAndValueForSelect = await promptPropAndValueForSelect();
+      const {property, value} = propAndValueForSelect;
+      personsList = list.getEmployeesByProperty(property, value);
+    }
+
+    if (personsList) {
+      for (const person of personsList) {
+        console.log(person);
+      }
     }
   }
   main();
