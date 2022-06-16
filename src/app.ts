@@ -1,4 +1,3 @@
-import {EmployeesList, Position} from './employeeList'
-import {Controller, Director, Manager, Person, Worker} from './employees';
+import {main} from './prompt';
 
-console.log('Work in progress, please check later')
+main();
