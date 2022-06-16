@@ -41,7 +41,11 @@ class EmployeesList {
 
   editEmployeeById(id: number, key: string, newValue: string): void {
     if ((this._employeesMap.get(id) as any)[key]) {
-      (this._employeesMap.get(id) as any)[key] = newValue;
+      if (key === 'age') {
+        (this._employeesMap.get(id) as any)[key] = Number(newValue);
+      } else {
+        (this._employeesMap.get(id) as any)[key] = newValue;
+      }
     }
   }
 
